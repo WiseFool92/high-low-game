@@ -20,23 +20,41 @@ public class Game
     return randNum;
   }
 
-  public 
+  public bool GamePlay(string highLowCorrect, int rand)
+  {
+    bool didIWin = false;
+    if (highLowCorrect == "lower")
+    {
+      this.Upper = rand;
+    }
+    else if (highLowCorrect == "higher")
+    {
+      this.Lower = rand;
+    }
+    else
+    {
+      didIWin = true;
+    }
+      return didIWin;
+
+  }
 
 }
 
 public class Program
 {
+
   public static void Main()
   {
     Console.WriteLine("Would you like to play the higher/lower game? (Yes/No)");
     string yesOrNo = Console.ReadLine();
 
+
     if ((yesOrNo.ToLower() == "yes"))
     {
-      Game game = new Game(1, 100);
-      int rand = game.Limits();
 
-
+    Game game = new Game(1, 100);
+    LoopIt(game);
     }
     else
     {
@@ -51,5 +69,15 @@ public class Program
     {
       Random random = new Random();
       return random.Next(min,max);
+    }
+
+    public static string LoopIt(Game game)
+    {
+      int rand = game.Limits();
+      Console.WriteLine("Is your number higher or lower than " + rand + "? (higher/Lower/Correct)");
+      string response = Console.ReadLine();
+      game.GamePlay(response, rand);
+
+      return response;
     }
 }
