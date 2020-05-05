@@ -36,41 +36,27 @@ public class Game
       didIWin = true;
     }
       return didIWin;
-
   }
-
 }
 
 public class Program
 {
-
   public static void Main()
   {
     Console.WriteLine("Would you like to play the higher/lower game? (Yes/No)");
     string yesOrNo = Console.ReadLine();
-
-
+    
     if ((yesOrNo.ToLower() == "yes"))
     {
 
-    Game game = new Game(1, 100);
-    LoopIt(game);
+      Game game = new Game(1, 100);
+      LoopIt(game);
     }
     else
     {
       Console.WriteLine("Sad computer is sad");
     }
-
-    string highLow = Console.ReadLine();
-
-    int randomNum = RandomNumber(1, 100);
   }
-    public static int RandomNumber(int min, int max)
-    {
-      Random random = new Random();
-      return random.Next(min,max);
-    }
-
     public static void LoopIt(Game game)
     {
       bool won = false;
