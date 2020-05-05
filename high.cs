@@ -71,13 +71,25 @@ public class Program
       return random.Next(min,max);
     }
 
-    public static string LoopIt(Game game)
+    public static void LoopIt(Game game)
     {
-      int rand = game.Limits();
-      Console.WriteLine("Is your number higher or lower than " + rand + "? (higher/Lower/Correct)");
-      string response = Console.ReadLine();
-      game.GamePlay(response, rand);
-
-      return response;
+      bool won = false;
+      while (won == false) 
+      {
+        int rand = game.Limits();
+        Console.WriteLine("Is your number higher or lower than " + rand + "? (higher/Lower/Correct)");
+        string response = Console.ReadLine();
+        won = game.GamePlay(response, rand);
+      }
+      Console.WriteLine("Great! I guessed your number. Would you like to play again? (Yes/No)");
+      string answer = Console.ReadLine();
+      if (answer == "yes")
+      {
+        Main();
+      }
+      else
+      {
+        
+      }
     }
 }
