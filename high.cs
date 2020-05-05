@@ -1,50 +1,55 @@
 using System;
 using System.Collections.Generic;
 
-public class Triangle
-{
-  public int SideOne;
-  public int SideTwo;
-  public int SideThree;
-  public string triangleName;
-  public string triangleType(int s1, int s2, int s3)
-  {
-    if (s1 + s2 < s3 || s2 + s3 < s1 || s1 + s3 < s2)
-    {
-      triangleName = "Not a triangle";
-    }
-    else if (s1 == s2 && s1 == s3)
-    {
-      triangleName = "equilateral";
-    }
-    else if (s1 == s2 || s1 == s3 || s2 == s3)
-    {
-      triangleName = "isosoleces";
-    }
-    else
-    {
-      triangleName = "scalene";
-    }
 
-    return triangleName;
+public class Game
+{
+  public int Upper;
+  public int Lower;
+
+  public Game(int lower, int upper)
+  {
+    Lower = lower;
+    Upper = upper;
   }
+  public int Limits()
+  {
+    Random random = new Random();
+    int randNum = random.Next(Lower, Upper);
+    
+    return randNum;
+  }
+
+  public 
+
 }
+
 public class Program
 {
   public static void Main()
   {
-    Console.WriteLine("Side one");
-    int sideOne = int.Parse(Console.ReadLine());
+    Console.WriteLine("Would you like to play the higher/lower game? (Yes/No)");
+    string yesOrNo = Console.ReadLine();
 
-    Console.WriteLine("Side Two");
-    int sideTwo = int.Parse(Console.ReadLine());
+    if ((yesOrNo.ToLower() == "yes"))
+    {
+      Game game = new Game(1, 100);
+      int rand = game.Limits();
 
-    Console.WriteLine("Side Three");
-    int sideThree = int.Parse(Console.ReadLine());
 
-    Triangle equal = new Triangle();
-    string triangleName = equal.triangleType(sideOne, sideTwo, sideThree);
-    Console.WriteLine(triangleName);
+    }
+    else
+    {
+      Console.WriteLine("Sad computer is sad");
+    }
+
+    string highLow = Console.ReadLine();
+
+    int randomNum = RandomNumber(1, 100);
   }
+    public static int RandomNumber(int min, int max)
+    {
+      Random random = new Random();
+      return random.Next(min,max);
+    }
 }
-
